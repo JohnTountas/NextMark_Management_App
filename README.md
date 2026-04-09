@@ -88,43 +88,6 @@ The current application uses a simple client-side state model:
 
 This design is appropriate for a lightweight standalone application and provides a clean foundation for future expansion into API-backed persistence.
 
-## Local Development
-
-### Prerequisites
-
-- Node.js 18 or newer
-- npm
-
-### Installation
-
-```bash
-npm install
-```
-
-### Start the Development Server
-
-```bash
-npm run dev
-```
-
-### Create a Production Build
-
-```bash
-npm run build
-```
-
-### Preview the Production Build
-
-```bash
-npm run preview
-```
-
-### Run Linting
-
-```bash
-npm run lint
-```
-
 ## Available Scripts
 
 - `npm run dev` starts the Vite development server
