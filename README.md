@@ -1,4 +1,4 @@
-# NextMark
+# NextMark - A "TODO" Management App
 
 NextMark is a polished, local-first task management application built with React, Vite, and Tailwind CSS. It is designed to demonstrate thoughtful frontend engineering, clean component architecture, and a product-minded user experience in a compact codebase.
 
