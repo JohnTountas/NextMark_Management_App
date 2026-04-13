@@ -78,7 +78,7 @@ export default function TaskInput({ onAdd }) {
               type="submit"
               aria-label="Add task"
               className="w-7 h-7 rounded-full border-2 border-stone-300 dark:border-stone-600 shrink-0
-                flex items-center justify-center
+                flex items-center justify-center cursor-pointer
                 hover:border-amber-500 hover:bg-amber-50/80 dark:hover:border-amber-500 dark:hover:bg-amber-900/20
                 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:focus:ring-offset-stone-800"
             >
@@ -154,7 +154,7 @@ export default function TaskInput({ onAdd }) {
                         type="button"
                         onClick={() => setPriority(p)}
                         className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-medium border capitalize
-                          transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-amber-400
+                          transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer
                           ${
                             priority === p
                               ? priorityColors[p]
@@ -189,7 +189,7 @@ export default function TaskInput({ onAdd }) {
                 className="mt-3 w-full py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white
                   text-sm font-semibold tracking-wide transition-all duration-200
                   focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2
-                  dark:focus:ring-offset-stone-800 shadow-sm hover:shadow-md active:scale-[0.98]"
+                  dark:focus:ring-offset-stone-800 shadow-sm hover:shadow-md active:scale-[0.98] cursor-pointer"
               >
                 Add Task
               </button>

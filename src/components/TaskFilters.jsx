@@ -50,10 +50,10 @@ export default function TaskFilters({
               key={f}
               onClick={() => onFilter(f)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all duration-200
-                focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-1
+                focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-1 cursor-pointer
                 ${
                   filter === f
-                    ? "border border-[#e8ddcc] bg-white text-stone-800 shadow-[0_10px_24px_-18px_rgba(68,64,60,0.4)] dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100 dark:shadow-none"
+                    ? "border border-[#e8ddcc] bg-amber-100 text-stone-800 shadow-[0_10px_24px_-18px_rgba(68,64,60,0.4)] dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100 dark:shadow-none"
                     : "text-stone-500 dark:text-stone-500 hover:text-stone-700 dark:hover:text-stone-300"
                 }`}
             >

@@ -162,7 +162,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[linear-gradient(180deg,#fffdfb_0%,#faf5ee_38%,#f3ece2_72%,#ebe1d5_100%)] dark:bg-none dark:bg-stone-950 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[linear-gradient(180deg,#fffdfb_0%,#faf5ee_38%,#f3ece2_72%,#ebe1d5_100%)] dark:bg-none dark:bg-stone-700 transition-colors duration-600">
       {/* Decorative background stays outside the content card so layout and
           product logic stay separated from presentation-only effects. */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none dark:hidden">
@@ -174,7 +174,7 @@ export default function App() {
       <div className="relative w-full max-w-xl mx-auto flex-1 px-4 py-10 sm:py-16">
         {/* This shell card gives us one predictable surface for borders,
             elevation, and spacing as the feature set grows. */}
-        <div className="rounded-4xl border border-[#daccb7] bg-white/90 p-5 shadow-[0_33px_60px_-10px_rgba(41,37,36,0.22),0_33px_240px_-18px_rgba(41,37,36,0.1)] sm:p-6 dark:border-stone-800/80 dark:bg-stone-900/80 dark:shadow-[0_30px_72px_-42px_rgba(0,0,0,0.58),0_12px_28px_-20px_rgba(0,0,0,0.34)]">
+        <div className="rounded-4xl border border-[#daccb7] bg-white/60 p-5 shadow-[0_56px_90px_-7px_rgba(41,37,36,0.22),0_10px_15px_20px_rgba(41,37,36,0.1)] sm:p-6 dark:border-stone-800/80 dark:bg-stone-900/80 dark:shadow-[0_30px_72px_-42px_rgba(0,0,0,0.58),0_12px_28px_-20px_rgba(0,0,0,0.34)]">
           <Header
             dark={dark}
             onToggleDark={() => setDark((d) => !d)}
