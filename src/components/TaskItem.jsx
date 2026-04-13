@@ -113,7 +113,7 @@ export default function TaskItem({
                   type="button"
                   onClick={() => setEditPriority(p)}
                   className={`px-2.5 py-1 rounded-lg text-xs font-medium capitalize transition-all duration-150
-                    focus:outline-none focus:ring-2 focus:ring-amber-400
+                    focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer
                     ${
                       editPriority === p
                         ? PRIORITY_STYLES[p].badge
@@ -138,7 +138,7 @@ export default function TaskItem({
             <button
               type="submit"
               className="flex-1 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs
-                font-semibold transition-all duration-200 focus:outline-none focus:ring-2
+                font-semibold transition-all duration-200 focus:outline-none focus:ring-2 cursor-pointer
                 focus:ring-amber-500 focus:ring-offset-2 dark:focus:ring-offset-stone-800"
             >
               Save
@@ -151,7 +151,7 @@ export default function TaskItem({
               }}
               className="flex-1 py-1.5 rounded-xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200
                 dark:hover:bg-stone-600 text-stone-600 dark:text-stone-300 text-xs font-semibold
-                transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-stone-400"
+                transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-stone-400 cursor-pointer"
             >
               Cancel
             </button>
@@ -178,8 +178,8 @@ export default function TaskItem({
         {/* Drag handle */}
         <div
           {...dragHandleProps}
-          className="mt-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200
-            cursor-grab active:cursor-grabbing text-stone-400 dark:text-stone-600 self-center"
+          className="mt-0.5 shrink-0 opacity-100
+            cursor-grab active:cursor-grabbing text-stone-500 dark:text-stone-500 self-center"
           aria-label="Drag to reorder"
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
@@ -202,7 +202,7 @@ export default function TaskItem({
             dark:focus:ring-offset-stone-800
             ${
               task.completed
-                ? "bg-emerald-500 border-emerald-500 scale-95"
+                ? "bg-emerald-500 border-emerald-500 scale-98"
                 : "border-stone-300 dark:border-stone-600 hover:border-emerald-400 dark:hover:border-emerald-500 hover:scale-110"
             }`}
         >
@@ -285,7 +285,7 @@ export default function TaskItem({
             className="w-7 h-7 rounded-lg flex items-center justify-center
               text-stone-400 dark:text-stone-600 hover:text-amber-500 dark:hover:text-amber-400
               hover:bg-amber-50/80 dark:hover:bg-amber-900/20 transition-all duration-150
-              focus:outline-none focus:ring-2 focus:ring-amber-400"
+              focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
           >
             <svg
               width="13"
@@ -304,7 +304,7 @@ export default function TaskItem({
             onClick={handleDeleteClick}
             aria-label={confirmDelete ? "Confirm delete" : "Delete task"}
             className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-150
-              focus:outline-none focus:ring-2 focus:ring-rose-400
+              focus:outline-none focus:ring-2 focus:ring-rose-400 cursor-pointer
               ${
                 confirmDelete
                   ? "bg-rose-50 dark:bg-rose-900/30 text-rose-500 dark:text-rose-400"

@@ -17,13 +17,13 @@ export default function Header({
 
   return (
     <header className="mb-8 border-b border-[#ece3d5] pb-8 fade-in dark:border-stone-800/80">
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-4  ">
         <div>
           <div className="mb-5 flex items-center"></div>
-          <h1 className="font-display text-3xl sm:text-3xl text-stone-900 dark:text-stone-50 leading-tight ">
+          <h1 className="font-display text-3xl sm:text-3xl text-stone-900 dark:text-stone-50 leading-tight  ">
             Stay on top of what matters.
           </h1>
-          <p className="mt-3 text-sm font-semibold text-stone-600 dark:text-stone-400">
+          <p className="mt-3 text-sm font-semibold text-stone-600 dark:text-stone-400 ">
             {today}
           </p>
         </div>

@@ -151,17 +151,8 @@ export default function App() {
         <div className="absolute -bottom 24 left-1/3 h-72 w-72 rounded-full bg-rose-200/15 blur-3xl" />
       </div>
 
-      {/* Subtle texture overlay */}
-      {/* <div
-        className="fixed inset-0 pointer-events-none opacity-[0.012] dark:opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-        }}
-      /> */}
-
       <div className="relative w-full max-w-xl mx-auto flex-1 px-4 py-10 sm:py-16">
-        <div className="rounded-4xl border border-[#daccb7] bg-white/90 p-5 shadow-[0_px_80px_-44px_rgba(68,64,60,0.4),0_16px_36px_-30px_rgba(217,119,6,0.22)] sm:p-6 dark:border-stone-800/80 dark:bg-stone-900/80 dark:shadow-[0_32px_80px_-44px_rgba(0,0,0,0.7)]">
+        <div className="rounded-4xl border border-[#daccb7] bg-white/90 p-5 shadow-[0_33px_60px_-10px_rgba(41,37,36,0.22),0_33px_240px_-18px_rgba(41,37,36,0.1)] sm:p-6 dark:border-stone-800/80 dark:bg-stone-900/80 dark:shadow-[0_30px_72px_-42px_rgba(0,0,0,0.58),0_12px_28px_-20px_rgba(0,0,0,0.34)]">
           <Header
             dark={dark}
             onToggleDark={() => setDark((d) => !d)}
@@ -202,7 +193,7 @@ export default function App() {
           {stats.total > 0 && (
             <p className="mt-8 text-center text-sm font-medium text-stone-500 dark:text-stone-700 fade-in">
               {stats.active === 0
-                ? "All tasks complete - great work!"
+                ? "All tasks complete - Great work!"
                 : `${stats.active} task${stats.active !== 1 ? "s" : ""} left to complete`}
             </p>
           )}

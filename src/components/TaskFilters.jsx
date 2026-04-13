@@ -40,7 +40,7 @@ export default function TaskFilters({
       </div>
 
       {/* Filter tabs + Clear completed */}
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center justify-between gap-2 ">
         <div className="flex gap-0.5 rounded-xl border border-[#ece1d2] bg-[#f4ede4]/90 p-1 dark:border-stone-700/70 dark:bg-stone-800/60">
           {filters.map((f) => (
             <button
@@ -62,8 +62,8 @@ export default function TaskFilters({
         {hasCompleted && (
           <button
             onClick={onClearCompleted}
-            className="text-xs text-stone-500 dark:text-stone-500 hover:text-rose-500 dark:hover:text-rose-400
-              transition-colors duration-200 font-medium focus:outline-none focus:underline whitespace-nowrap"
+            className="text-xs hover:scale-110 text-stone-600 dark:text-stone-600 hover:text-rose-500 dark:hover:text-rose-400
+              transition-colors duration-200 font-medium focus:outline-none focus:underline whitespace-nowrap cursor-pointer "
           >
             Clear done
           </button>
