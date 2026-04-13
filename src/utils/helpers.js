@@ -1,7 +1,11 @@
+// Legacy helper module for the alternate hook-based state layer. Keeping the
+// rationale close to the utilities makes future consolidation easier.
 export const generateId = () =>
   `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
 
 export const formatDate = (dateStr) => {
+  // Reduce a raw due date into a compact badge model that UI components can
+  // render without repeating date math.
   if (!dateStr) return null;
   const d = new Date(dateStr + 'T00:00:00');
   const now = new Date();
@@ -17,12 +21,16 @@ export const formatDate = (dateStr) => {
   };
 };
 
+// Priority metadata is centralized here so alternate views can share display
+// labels and semantic colors.
 export const PRIORITY_CONFIG = {
   low:    { label: 'Low',    color: 'stone',  dot: '#a8a29e' },
   medium: { label: 'Med',    color: 'amber',  dot: '#f59e0b' },
   high:   { label: 'High',   color: 'rose',   dot: '#f43f5e' },
 };
 
+// Sample data supports demos and manual QA when this older hook stack is used
+// in isolation from the current App shell.
 export const SAMPLE_TASKS = [
   {
     id: 'sample-1',

@@ -1,3 +1,5 @@
+// These controls are intentionally stateless: App owns the query state and
+// this component simply emits user intent.
 export default function TaskFilters({
   filter,
   onFilter,
@@ -6,6 +8,7 @@ export default function TaskFilters({
   onClearCompleted,
   hasCompleted,
 }) {
+  // One source of truth for the tab order keeps the UI and filtering contract in sync.
   const filters = ["all", "active", "completed"];
 
   return (

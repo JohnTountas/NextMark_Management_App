@@ -1,11 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Keep document-level concerns here: metadata, icons, and font loading.
+         React owns everything inside the root container below. -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
     <link rel="icon" href="%BASE_URL%favicon.ico" sizes="any" />
     <title>NextMark - Everything you need</title>
+    <!-- Load brand typography early so the first paint matches the intended
+         visual system before the app finishes rendering. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,6 +18,8 @@
     />
   </head>
   <body>
+    <!-- Single SPA mount point. Keeping this uncluttered makes hydration and
+         debugging much easier. -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

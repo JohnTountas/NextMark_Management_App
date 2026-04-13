@@ -1,3 +1,5 @@
+// Flat ESLint config keeps quality rules explicit and colocated with the
+// React/Vite conventions used in this repository.
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'

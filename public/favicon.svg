@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Simple geometric checkmark so the icon stays recognizable even at small
+       favicon sizes and in browser tab previews. -->
   <defs>
     <linearGradient id="nextmark-gradient" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f59e0b" />

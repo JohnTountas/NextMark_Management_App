@@ -1,3 +1,5 @@
+// Render stat cards from data instead of hardcoded markup so new metrics can be
+// introduced with minimal surface area.
 export default function TaskStats({ total, active, completed }) {
   const stats = [
     { label: 'Total', value: total, color: 'text-stone-700 dark:text-stone-300' },

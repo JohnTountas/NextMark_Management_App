@@ -6,11 +6,16 @@ import TaskInput from "./components/TaskInput";
 import TaskFilters from "./components/TaskFilters";
 import TaskList from "./components/TaskList";
 
+// App is the composition root for product state. Persistence, filtering,
+// derived stats, and cross-component orchestration live here on purpose.
 function generateId() {
+  // Timestamp + entropy is sufficient for a local-first list with drag/drop.
   return `task_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
 }
 
 export default function App() {
+  // Read from the current keys and migrate any older suffix-matching keys
+  // forward without forcing users to lose saved state.
   const [tasks, setTasks] = useLocalStorage("nextmark_tasks", [], {
     legacyKeyMatcher: (storageKey) => storageKey.endsWith("_tasks"),
   });
@@ -23,7 +28,8 @@ export default function App() {
     new Date().getFullYear(),
   );
 
-  // Sync dark mode class on <html>
+  // Keep the document root in sync so Tailwind's class-based dark mode works
+  // consistently across every component.
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
@@ -40,6 +46,8 @@ export default function App() {
       now.getDate() + 1,
     );
 
+    // Long-lived tabs should roll the footer year forward automatically
+    // without requiring a refresh.
     timeoutId = window.setTimeout(() => {
       syncYear();
       intervalId = window.setInterval(syncYear, 86400000);
@@ -95,16 +103,30 @@ export default function App() {
     setTasks((prev) => prev.filter((t) => !t.completed));
   }, [setTasks]);
 
+  // Centralize filtering so rendering, stats, and reordering all rely on the
+  // same visibility rules.
+  const getFiltered = useCallback((allTasks, f, s) => {
+    return allTasks
+      .filter((t) => {
+        if (f === "active") return !t.completed;
+        if (f === "completed") return t.completed;
+        return true;
+      })
+      .filter((t) => !s || t.text.toLowerCase().includes(s.toLowerCase()));
+  }, []);
+
   const reorderTasks = useCallback(
     (fromIndex, toIndex) => {
       setTasks((prev) => {
-        // We reorder within the full list based on filtered indices
+        // Drag-and-drop operates on the visible slice, so reorder that subset
+        // first before rebuilding the full collection.
         const filtered = getFiltered(prev, filter, search);
         const reorderedFiltered = [...filtered];
         const [moved] = reorderedFiltered.splice(fromIndex, 1);
         reorderedFiltered.splice(toIndex, 0, moved);
 
-        // Rebuild full list preserving non-filtered items in their relative positions
+        // Hidden items should keep their existing relative order when a user
+        // drags inside a filtered view.
         const filteredIds = new Set(filtered.map((t) => t.id));
         const nonFiltered = prev.filter((t) => !filteredIds.has(t.id));
         const result = [];
@@ -120,24 +142,16 @@ export default function App() {
         return result;
       });
     },
-    [filter, search, setTasks],
+    [filter, getFiltered, search, setTasks],
   );
-
-  function getFiltered(allTasks, f, s) {
-    return allTasks
-      .filter((t) => {
-        if (f === "active") return !t.completed;
-        if (f === "completed") return t.completed;
-        return true;
-      })
-      .filter((t) => !s || t.text.toLowerCase().includes(s.toLowerCase()));
-  }
 
   const filteredTasks = useMemo(
     () => getFiltered(tasks, filter, search),
-    [tasks, filter, search],
+    [tasks, filter, getFiltered, search],
   );
 
+  // Keep summary data derived from the canonical task list so child components
+  // remain simple and receive plain values.
   const stats = useMemo(
     () => ({
       total: tasks.length,
@@ -149,6 +163,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[linear-gradient(180deg,#fffdfb_0%,#faf5ee_38%,#f3ece2_72%,#ebe1d5_100%)] dark:bg-none dark:bg-stone-950 transition-colors duration-300">
+      {/* Decorative background stays outside the content card so layout and
+          product logic stay separated from presentation-only effects. */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none dark:hidden">
         <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-amber-300/25 blur-3xl" />
         <div className="absolute top-24 -right-24 h-96 w-96 rounded-full bg-sky-200/30 blur-3xl" />
@@ -156,6 +172,8 @@ export default function App() {
       </div>
 
       <div className="relative w-full max-w-xl mx-auto flex-1 px-4 py-10 sm:py-16">
+        {/* This shell card gives us one predictable surface for borders,
+            elevation, and spacing as the feature set grows. */}
         <div className="rounded-4xl border border-[#daccb7] bg-white/90 p-5 shadow-[0_33px_60px_-10px_rgba(41,37,36,0.22),0_33px_240px_-18px_rgba(41,37,36,0.1)] sm:p-6 dark:border-stone-800/80 dark:bg-stone-900/80 dark:shadow-[0_30px_72px_-42px_rgba(0,0,0,0.58),0_12px_28px_-20px_rgba(0,0,0,0.34)]">
           <Header
             dark={dark}

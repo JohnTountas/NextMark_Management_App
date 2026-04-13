@@ -1,3 +1,6 @@
+/* Legacy Vite scaffold styles retained in the repo for reference. This file is
+   not imported by the current app shell, so it is a safe cleanup candidate once
+   the team confirms nothing external depends on it. */
 .counter {
   font-size: 16px;
   padding: 5px 10px;

@@ -1,3 +1,5 @@
+// Isolating theme-switch UI here keeps the header lean and makes it easy to
+// evolve the control without touching unrelated header markup.
 export default function ThemeToggle({ dark, onToggle }) {
   return (
     <button

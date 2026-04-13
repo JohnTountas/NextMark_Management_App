@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
-/* Dark mode via class strategy */
+/* Tailwind v4 keeps most theming CSS-first in this file, which makes design
+   tokens easy to audit without bouncing between config and components. */
+
+/* Dark mode is driven by the root `.dark` class so React only needs to toggle
+   a single document-level switch. */
 @variant dark (&:where(.dark, .dark *));
 
-/* Custom theme tokens */
+/* Core design tokens: shared colors and fonts live here so component classes
+   can stay expressive without repeating literal values everywhere. */
 @theme {
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
@@ -43,6 +48,8 @@
 }
 
 @layer base {
+  /* Base resets are intentionally light; components own the majority of the
+     visual language through utilities and semantic tokens. */
   * { box-sizing: border-box; }
 
   body {
@@ -60,6 +67,8 @@
 }
 
 @layer utilities {
+  /* Shared motion primitives keep micro-interactions consistent across task
+     creation, filtering, and drag/drop states. */
   @keyframes taskEnter {
     from { opacity: 0; transform: translateY(-6px) scale(0.99); }
     to   { opacity: 1; transform: translateY(0) scale(1); }

@@ -1,3 +1,5 @@
+// Keep empty-state copy contextual so users can tell whether the list is empty
+// because of filters, search, or genuinely having no tasks yet.
 export default function EmptyState({ filter, search }) {
   if (search) {
     return (

@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
+// Keep priority display tokens centralized so badges stay visually consistent
+// between read and edit states.
 const PRIORITY_STYLES = {
   low: {
     dot: "bg-sky-400",
@@ -17,6 +19,8 @@ const PRIORITY_STYLES = {
 };
 
 function formatDate(str) {
+  // Convert raw ISO dates into small UI-friendly states so the JSX only cares
+  // about labels and urgency flags.
   if (!str) return null;
   const d = new Date(str + "T00:00:00");
   const now = new Date();
@@ -40,6 +44,8 @@ export default function TaskItem({
   dragHandleProps,
   isDragging,
 }) {
+  // Local UI state lives in the card so inline editing and delete confirmation
+  // do not force the list container to manage transient interaction details.
   const [editing, setEditing] = useState(false);
   const [editText, setEditText] = useState(task.text);
   const [editPriority, setEditPriority] = useState(task.priority);
@@ -48,10 +54,13 @@ export default function TaskItem({
   const editRef = useRef(null);
   const deleteTimer = useRef(null);
 
+  // Move focus directly into the inline editor when edit mode opens.
   useEffect(() => {
     if (editing) editRef.current?.focus();
   }, [editing]);
 
+  // Delete confirmation uses a timeout window, so clear it on unmount to avoid
+  // stray state updates.
   useEffect(() => () => clearTimeout(deleteTimer.current), []);
 
   function handleEditSubmit(e) {
@@ -76,6 +85,8 @@ export default function TaskItem({
   }
 
   function handleDeleteClick() {
+    // Require a second click inside a short window to reduce accidental deletes
+    // without paying the UX cost of a full modal dialog.
     if (confirmDelete) {
       onDelete(task.id);
     } else {
@@ -85,6 +96,7 @@ export default function TaskItem({
   }
 
   const pStyle = PRIORITY_STYLES[task.priority] || PRIORITY_STYLES.medium;
+  // Precompute date metadata once so the render branch stays readable.
   const dateInfo = formatDate(task.dueDate);
 
   if (editing) {

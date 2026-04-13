@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+// Tailwind v4 leans CSS-first in `src/index.css`, but this file still documents
+// scan paths and any shared design extensions that should remain centralized.
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',

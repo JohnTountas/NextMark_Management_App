@@ -1,5 +1,9 @@
+// Header stays presentation-focused: it surfaces context, progress, and theme
+// switching while the App shell remains the source of truth for data.
 import ThemeToggle from "./ThemeToggle";
 
+// Keep locale formatting close to the UI that owns it so future product-led
+// date formatting changes do not leak into task logic.
 const today = new Date().toLocaleDateString("GR", {
   weekday: "long",
   month: "long",
@@ -32,6 +36,8 @@ export default function Header({
 
       {totalTasks > 0 && (
         <div className="mt-8">
+          {/* The progress meter is fully derived from props and intentionally
+              avoids any local state so it never drifts from the real task data. */}
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-stone-500 dark:text-stone-500 font-medium tracking-wide uppercase">
               Progress:

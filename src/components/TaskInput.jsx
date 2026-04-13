@@ -1,7 +1,11 @@
 import { useState, useRef } from "react";
 
+// Keep allowed priorities in one place so create/edit flows can stay aligned if
+// the product expands its task taxonomy later.
 const PRIORITIES = ["low", "medium", "high"];
 
+// Task creation owns its transient form state locally and emits a normalized
+// payload upward once validation passes.
 export default function TaskInput({ onAdd }) {
   const [text, setText] = useState("");
   const [priority, setPriority] = useState("medium");
@@ -13,6 +17,9 @@ export default function TaskInput({ onAdd }) {
   function handleSubmit(e) {
     e.preventDefault();
     const trimmed = text.trim();
+
+    // Validate at the edge of the form so upstream state only receives clean
+    // task payloads.
     if (!trimmed) {
       setError("Please enter a task name.");
       inputRef.current?.focus();
@@ -27,12 +34,16 @@ export default function TaskInput({ onAdd }) {
   }
 
   function handleKeyDown(e) {
+    // Escape collapses the optional controls without discarding an in-progress
+    // task name, which makes the interaction forgiving.
     if (e.key === "Escape") {
       setExpanded(false);
       setError("");
     }
   }
 
+  // Styling remains data-driven to keep the button rendering branch small and
+  // predictable as theme tokens evolve.
   const priorityColors = {
     low: "text-sky-600 dark:text-sky-400 bg-sky-100 dark:bg-sky-900/30 border-sky-200 dark:border-sky-800",
     medium:
