@@ -290,13 +290,13 @@ export default function TaskItem({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-0.5">
+        <div className="flex items-center gap-1 shrink-0 opacity-100 mt-0.5">
           <button
             onClick={() => setEditing(true)}
             aria-label="Edit task"
             className="w-7 h-7 rounded-lg flex items-center justify-center
               text-stone-400 dark:text-stone-600 hover:text-amber-500 dark:hover:text-amber-400
-              hover:bg-amber-50/80 dark:hover:bg-amber-900/20 transition-all duration-150
+              hover:bg-amber-100 dark:hover:bg-amber-900/20 transition-all duration-150
               focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
           >
             <svg
@@ -316,7 +316,7 @@ export default function TaskItem({
             onClick={handleDeleteClick}
             aria-label={confirmDelete ? "Confirm delete" : "Delete task"}
             className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-150
-              focus:outline-none focus:ring-2 focus:ring-rose-400 cursor-pointer
+              focus:outline-none focus:ring-2 focus:ring-rose-400 cursor-pointer hover:bg-rose-100
               ${
                 confirmDelete
                   ? "bg-rose-50 dark:bg-rose-900/30 text-rose-500 dark:text-rose-400"
