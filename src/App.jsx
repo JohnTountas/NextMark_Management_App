@@ -11,8 +11,12 @@ function generateId() {
 }
 
 export default function App() {
-  const [tasks, setTasks] = useLocalStorage("opus_tasks", []);
-  const [dark, setDark] = useLocalStorage("opus_dark", false);
+  const [tasks, setTasks] = useLocalStorage("nextmark_tasks", [], {
+    legacyKeyMatcher: (storageKey) => storageKey.endsWith("_tasks"),
+  });
+  const [dark, setDark] = useLocalStorage("nextmark_dark", false, {
+    legacyKeyMatcher: (storageKey) => storageKey.endsWith("_dark"),
+  });
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [currentYear, setCurrentYear] = useState(() =>

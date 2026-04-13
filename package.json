@@ -1,5 +1,5 @@
 {
-  "name": "todo-app",
+  "name": "nextmark",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -33,7 +33,7 @@
     "tailwindcss": "^4.2.2",
     "vite": "^8.0.7"
   },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "description": "NextMark is a polished, local-first task management application built with React, Vite, and Tailwind CSS.",
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",
