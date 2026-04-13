@@ -213,10 +213,10 @@ export default function App() {
 
           {/* Footer */}
           {stats.total > 0 && (
-            <p className="mt-8 text-center text-sm font-medium text-stone-500 dark:text-stone-700 fade-in">
+            <p className="mt-8 text-center text-sm font-medium text-stone-600 dark:text-stone-400 fade-in">
               {stats.active === 0
-                ? "All tasks complete - Great work!"
-                : `${stats.active} task${stats.active !== 1 ? "s" : ""} left to complete`}
+                ? "All tasks completed - Great work!"
+                : `${stats.active} task${stats.active !== 1 ? "s" : ""} left to complete.`}
             </p>
           )}
         </div>
@@ -226,14 +226,14 @@ export default function App() {
         <div className="mx-auto grid max-w-6xl items-center gap-4 sm:grid-cols-[1fr_auto_1fr]">
           <div className="hidden sm:block" />
 
-          <p className="justify-self-end text-right text-xs font-medium tracking-[0.02em] text-stone-600 dark:text-stone-500 sm:col-start-3 sm:justify-self-end sm:text-right">
+          <p className="justify-self-end text-right text-xs font-medium tracking-[0.02em] text-stone-500 dark:text-stone-300 sm:col-start-3 sm:justify-self-end sm:text-right">
             Copyright {currentYear} - NextMark.
             <br /> All rights reserved. Created by{" "}
             <a
               href="https://www.linkedin.com/in/ioannis-tountas"
               target="_blank"
               rel="noreferrer"
-              className="text-amber-600 underline decoration-transparent underline-offset-4 transition-all duration-200 hover:text-blue-400 hover:decoration-blue-400 focus:outline-none focus:text-amber-600 focus:decoration-amber-500 dark:text-stone-300 dark:hover:text-amber-400 dark:hover:decoration-amber-400 dark:focus:text-amber-400 dark:focus:decoration-amber-400"
+              className="text-amber-600 underline decoration-transparent underline-offset-4 transition-all duration-200 hover:text-blue-400 hover:decoration-blue-400 focus:outline-none focus:text-amber-600 focus:decoration-amber-500 dark:text-amber-500 dark:hover:text-blue-400 dark:hover:decoration-blue-400 dark:focus:text-amber-400 dark:focus:decoration-amber-400"
             >
               John Tountas
             </a>
